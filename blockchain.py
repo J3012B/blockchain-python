@@ -6,6 +6,10 @@ from uuid import uuid4
 
 from flask import Flask, jsonify, request
 
+"""
+    Blockhain class definition
+"""
+
 class Blockchain(object):
     def __init__(self):
         self.chain = []
@@ -60,12 +64,14 @@ class Blockchain(object):
 
 
 
-app = Flask(__name__)
 
-node_identifier = str(uuid4()).replace('-', '')
+"""
+    HTTP Server definition
+"""
 
-blockchain = Blockchain()
-
+app = Flask(__name__) // creates flask instance
+node_identifier = str(uuid4()).replace('-', '') // unique id
+blockchain = Blockchain() // creates blockchain instance
 
 @app.route('/mine', methods=['GET'])
 def mine():
